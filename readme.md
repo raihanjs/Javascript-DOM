@@ -6,7 +6,7 @@ Dom is an interface of JavaScript.
 <br/>
 We can get, change, add, or delete HTML elements with DOM.
 <br/>
-![DOM Tree !](./assets/img/event-bubbling-default.png)
+![DOM Tree !](./assets/dom-tree.png)
 <br/>
 D — Document
 <br/>
