@@ -129,7 +129,9 @@ document.getElementById("add").addEventListener("click", function () {
 
 ```
 document.getElementById("lists").addEventListener("click", function (event) {
-  lists.removeChild(event.target);
+  if (event.target.matches("li")) {
+    lists.removeChild(event.target);
+  }
 });
 document.getElementById("add").addEventListener("click", function () {
   let newLi = document.createElement("li");
