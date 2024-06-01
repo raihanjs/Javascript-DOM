@@ -84,6 +84,64 @@ function listener() {
 <br/>
 Event Capturing কে Trickling ও বলা হয়।
 
+### Event Delegation
+
+Delegation শব্দের অর্থ হচ্ছে অর্পণ করা। Javascript এর ভাষায় একাধিক ইলিমেন্টের জন্য একটাই ইভেন্ট লিসেনার রাখা এবং নতুন ইলিমেন্ট যোগ করলেও যেন লিসেনার কাজ করে।
+<br/>
+এটা আমাদের কাজে লাগে যখন আমরা জানি না আমাদের কতগুলো ইলিমেন্ট আসবে বা ডাইনামিকলি কাজ করতে গেলে। আমাদের ডাটা যখন API এর মাধ্যমে আসবে তখন যেন আমরা ডাইনামিকভাবে কাজ করতে পারি তাই আমরা এর ব্যাবহার করতে পারি।
+
+<br/>
+<br/>
+ধরা যাক একটি লিস্ট আগে থেকেই ছিল এবং আমি একটি ফাংশন রেখেছি জে ওই নির্দিষ্ট ডিভে ক্লিক করলে সেটি ভ্যানিশ হয়ে যাবে। এবং তার নিচে এমন অপশন ও রাখলাম যেন নতুন আইটেম যুক্ত করা যায়। কিন্তু সমস্যা হল নতুন যুক্ত করা আইটেম গুলো ডিলিট হচ্ছে না। কিন্তু আগে থেকে ডিফাইন করা আইটেম গুলো রিমুভ হচ্ছে।
+
+```
+<!-- HTML Code -->
+<section id="box" class="box">
+ <ul id="lists">
+  <li class="item">Item1</li>
+  <li class="item">Item2</li>
+  <li class="item">Item3</li>
+ </ul>
+ <button id="add">Add new item</button>
+</section>
+```
+
+```
+// JavaScript Code
+const items = document.getElementsByClassName("item");
+for (let item of items) {
+  item.addEventListener("click", function (event) {
+    event.target.parentNode.removeChild(event.target);
+  });
+}
+
+document.getElementById("add").addEventListener("click", function () {
+  const lists = document.getElementById("lists");
+  let newLi = document.createElement("li");
+  newLi.classList.add("item");
+  newLi.innerText = "New added item";
+  lists.appendChild(newLi);
+});
+
+```
+
+এই ক্ষেত্রে ওই আইটেম গুলোর প্যারেন্ট কে ধরে আমাদের ফাংশনালিটি অ্যাড করতে হবে এবং এই সিস্টেম কে event deligation বলে। অর্থাৎ আমাদের যেহেতু bubble হয় তাই আমরা আমাদের চাইল্ডে ইভেন্ট ক্যাচ না করে delegate করে প্যারেন্ট এর কাছে পাঠিয়ে দিলাম। এই যে delegate করলাম এই কারনেই একে delegation বলা হয়। যেমন →
+
+```
+document.getElementById("lists").addEventListener("click", function (event) {
+  lists.removeChild(event.target);
+});
+document.getElementById("add").addEventListener("click", function () {
+  let newLi = document.createElement("li");
+  newLi.classList.add("item");
+  newLi.innerText = "New added item";
+  lists.appendChild(newLi);
+});
+
+```
+
+এবার আমাদের নতুন যুক্ত হওয়া আইটেমে ক্লিক করলেও ডিলিট হবে।
+
 > [!IMPORTANT]
 > event.target ব্যাবহার করলে আমাদের যেই ক্লিক করা টার্গেট টা ছিল তাকেই দেখাবে।
 
