@@ -54,6 +54,30 @@ function listener(event) {
 ![Event Bubbling !](./assets/img/event-bubbling-default.png)  
 <br/>
 তার মানে চাইল্ড থেকে প্যারেন্ট এর দিকে যাচ্ছে। আমরা যেহেতু কোন কনফিগারেশন করি নাই তাই Event Propagation টা চাইল্ড থেকে প্যারেন্ট এর দিকে যাচ্ছে। এটা হচ্ছে Event Propagation এর ডিফল্ট আচরণ। আর এই নিচের থেকে উপরের দিকে যাওয়ার প্রসেসটাকে বলা হয় Event Bubbling। এটা Event Propagation এর একটি অংশ। অর্থাৎ আমাদের ইভেন্টগুলো নিচের থেকে উপরের দিকে বা চাইল্ড থেকে প্যারেন্ট এর দিকে চলাচল করলে এই প্রসেস তাকে Event Propagation এর Event Bubbling বলা হয় এবং এটা Event Propagation এর ডিফল্ট বিহেভিয়ার। পানির নিচে থেকে আমরা বুদবুদ তৈরি করলে যেভাবে পানির নিচ থেকে উপড়ের দিকে bubble তৈরি হয় Event Bubbling এও আমাদের ইভেন্টগুলো নিচের দিক থেকে উপড়ের দিকে যায় এজন্যই এটাকে বলা হয় Bubbling।
+<br/>
+যখন আমরা ব্রাউজারে ক্লিক করি তখন ব্রাউজার তার উপরের ইলিমেন্ট এ যেতে থাকে যতক্ষণ পর্যন্ত না সে root কে পায়। আর এই উপড়ে উঠার সময় সে যদি কোন ইলিমেন্ট এ কোন ইভেন্ট পায় তাহলে সেটাকে execute করে।
+ইভেন্ট বাবলিং হলো ইভেন্ট-এর প্রোপাগেশন যেটা এর অরিজিন থেকে উপরে রুট ইলিমেন্ট পর্যন্ত গিয়ে থামে।
+<br/>
+অর্থাৎ যখনি কোনো একজন ইউজার পেজের কোনো একটা বাটনে ক্লিক করে তথন সেই বাটনের আন্ডারে যে ইভেন্ট হ্যান্ডেলার টা আছে সেই ইভেন্ট টা তার প্যারেন্ট, তার প্যারেন্ট, আবার তার প্যারেন্ট এভাবে সে রুট ইলিমেন্ট Html পর্যন্ত ইভেন্ট-এর প্রোপাগেশন বা প্রচার চালায় । ইভেন্ট টি তার উপরের সব ইলিমেন্ট কে জানিয়ে দেয় যে, কেউ একজন তাকে ক্লিক করেছে।
+<br/>
+আমরা চাইলে বাবলিং টাকে রোধ করতে পারি, জাস্ট stopPropagation মেথড ব্যবহার করে।
+
+```
+const parent = document.getElementById("parent");
+const form = document.getElementById("form");
+const button = document.getElementById("button");
+
+parent.addEventListener("click", listener);
+form.addEventListener("click", listener);
+button.addEventListener("click", listener);
+
+function listener(event) {
+  event.stopPropagation();
+  console.log(event.currentTarget);
+}
+```
+
+তাহলে এবার শুধু যে ইলিমেন্ট এ ক্লিক করা হয়েছে শুধুমাত্র সে ইলিমেন্ট এর ইভেন্ট ফায়ার হবে এবং এবার আর Bubbling হবে না।
 
 ### Event Capturing or Trickling
 
