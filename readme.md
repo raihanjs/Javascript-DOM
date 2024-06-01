@@ -31,4 +31,4 @@ There are 4 ways to catch any HTML element
 4. querySelector() / querySelectorAll()
 
 > [!NOTE]
-> Classlist, appendChild, createElement, innerText, getAttribute, setAttribute, event handler, event listener, stop propagation, event bubble, event delegation
+> Classlist, appendChild, createElement, innerText, getAttribute, setAttribute, event handler, event listener, stop propagation, event bubble, event delegation, matches()
