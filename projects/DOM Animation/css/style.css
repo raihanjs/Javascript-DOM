@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#frame {
+  height: 400px;
+  width: 400px;
+  background-color: yellowgreen;
+  position: relative;
+}
+
+#animate {
+  height: 50px;
+  width: 50px;
+  background-color: tomato;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

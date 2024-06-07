@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+}
+.carousel {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-img {
+  top: 1vh;
+  left: 1vw;
+  height: 98vh;
+  width: 98vw;
+  border-radius: 10px;
+  transition: all 2s;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-arrow {
+  top: 50%;
+  width: 80vw;
+  display: flex;
+  padding: 0 10vw;
+  position: absolute;
+  transform: translateY(-50%);
+  justify-content: space-between;
+}
+
+.carousel-arrow i {
+  transition: all 0.3s;
+  background-color: #212121;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
+.carousel-arrow i:hover {
+  background-color: tomato;
+}
+
+.dots {
+  position: absolute;
+  top: 90vh;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 5px;
+  border-radius: 10px;
+  margin-top: 0px;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: gray;
+}
+.dot:hover {
+  background-color: tomato;
+}
+
+.dot-active {
+  padding: 2px;
+  margin-top: -3px;
+  transition: linear 0.1s;
+  background-color: tomato;
+}
