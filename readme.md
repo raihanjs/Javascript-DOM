@@ -17,8 +17,6 @@
 DOM আমাদের html ডকুমেন্টকে অবজেক্ট ওরিয়েন্টেডভাবে রিপ্রেজেন্ট করে যাতে আমরা ডমের সাহায্যে এই পেজের সাথে ইন্ট্যার‍্যাক্ট করতে পারি। এখন এই ইন্টার‍্যাকশানটা একটা প্রোগ্রামিং ল্যাংগুয়েজ বা জাভাস্ক্রিপ্ট দিয়েই করা হয়। এখন ডম যেহেতু অবজেক্ট রিপ্রেজেন্টশন, তো সেখানেও আমাদের জাভাস্ক্রিপ্ট এর অন্যান্য অবজেক্ট এর মতোই প্রপার্টি, মেথড থাকে। যেগুলোর সাহায্যে আমরা আমাদের পেজের সবকিছু অ্যাক্সেস করতে পারি, প্রয়োজনে মডিফাই করতে পারি সহজেই।
 <br/>
 DOM is a document object model & programming interface for HTML that defines html properties, objects, events, and methods to get, change, add, or delete html elements
-
-<br/>
 Dom is an interface of JavaScript.
 <br/>
 We can get, change, add, or delete HTML elements with DOM.
@@ -49,3 +47,14 @@ There are 4 ways to catch any HTML element
 
 > [!NOTE]
 > Classlist, appendChild, createElement, innerText, getAttribute, setAttribute, event handler, event listener, stop propagation, event bubble, event delegation, matches()
+
+> [!Difference between HTML Collection and Node Lists]
+
+- HTMLCollections can be accessed by their name, index, and ID
+
+* Nodelists can be accessed only by their index number
+
+> querySelectorAll & getElementsByName returns node Lists
+
+যখন আমরা প্যারেন্ট, চাইল্ড এই ধরনের রিলেশন নিয়ে কাজ করব বা appenChild, add node এই সমস্ত কাজ করার প্রয়োজন পরবে তখন আমরা node Lists নিয়ে কাজ করব।
+আর যখন নরমাল HTML element ধরা, চেঞ্জ করার কাজ করব তখন আমরা HTMLCollection নিয়ে কাজ করব।
